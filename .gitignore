@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Editors
+.idea/
+.vscode/
+
+# Hosting
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db

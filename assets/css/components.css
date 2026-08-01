@@ -1,0 +1,487 @@
+/* ==========================================================================
+   components.css — buttons, links, dropdown, collage, tabs, feature cards
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-base);
+  text-align: center;
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition), transform var(--transition);
+}
+
+.button--primary {
+  background-color: var(--color-ink);
+  color: var(--color-surface);
+}
+
+.button--primary:hover {
+  background-color: var(--color-ink-strong);
+  border-color: var(--color-ink-strong);
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-ink);
+}
+
+.button--secondary:hover {
+  background-color: var(--color-ink);
+  color: var(--color-surface);
+}
+
+.button--accent {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.button--accent:hover {
+  background-color: var(--color-accent-strong);
+  border-color: var(--color-accent-strong);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation links
+   -------------------------------------------------------------------------- */
+
+.site-nav__link,
+.dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: 0;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.site-nav__link:hover,
+.dropdown__trigger:hover {
+  color: var(--color-ink-muted);
+}
+
+.site-nav__link:active,
+.dropdown__trigger:active {
+  color: var(--color-ink-strong);
+}
+
+/* --------------------------------------------------------------------------
+   Dropdown
+   -------------------------------------------------------------------------- */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown__chevron {
+  width: 0.8125rem;
+  height: 0.75rem;
+  transition: transform var(--transition);
+}
+
+.dropdown__trigger[aria-expanded="true"] .dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown__panel {
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: var(--space-2) 0 var(--space-3) var(--space-3);
+  padding-inline-start: var(--space-3);
+  border-inline-start: 1px solid var(--color-border-soft);
+}
+
+.dropdown__panel:not([hidden]) {
+  display: flex;
+}
+
+.dropdown__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-height: 2.75rem;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform var(--transition), color var(--transition);
+}
+
+.dropdown__link-note {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-muted);
+}
+
+.dropdown__link:hover .dropdown__link-title {
+  color: var(--color-ink-strong);
+}
+
+/* --------------------------------------------------------------------------
+   Hero collage
+   -------------------------------------------------------------------------- */
+
+.collage {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Tabs — CSS-only, driven by a radio group
+   -------------------------------------------------------------------------- */
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.tabs__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.tabs__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition),
+    background-color var(--transition);
+}
+
+.tabs__label:hover {
+  color: var(--color-ink);
+  background-color: rgba(47, 47, 48, 0.05);
+}
+
+.tabs__label:active {
+  background-color: rgba(47, 47, 48, 0.1);
+}
+
+.tabs__panels {
+  width: 100%;
+  padding: 0.25rem 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.tabs__panel {
+  display: none;
+}
+
+.tabs__panel img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+#tab-wiki:checked ~ .tabs__list [for="tab-wiki"],
+#tab-meetings:checked ~ .tabs__list [for="tab-meetings"],
+#tab-handbook:checked ~ .tabs__list [for="tab-handbook"],
+#tab-onboarding:checked ~ .tabs__list [for="tab-onboarding"],
+#tab-process:checked ~ .tabs__list [for="tab-process"],
+#tab-okrs:checked ~ .tabs__list [for="tab-okrs"] {
+  border-color: var(--color-border);
+  color: var(--color-ink);
+}
+
+#tab-wiki:focus-visible ~ .tabs__list [for="tab-wiki"],
+#tab-meetings:focus-visible ~ .tabs__list [for="tab-meetings"],
+#tab-handbook:focus-visible ~ .tabs__list [for="tab-handbook"],
+#tab-onboarding:focus-visible ~ .tabs__list [for="tab-onboarding"],
+#tab-process:focus-visible ~ .tabs__list [for="tab-process"],
+#tab-okrs:focus-visible ~ .tabs__list [for="tab-okrs"] {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+#tab-wiki:checked ~ .tabs__panels [data-panel="wiki"],
+#tab-meetings:checked ~ .tabs__panels [data-panel="meetings"],
+#tab-handbook:checked ~ .tabs__panels [data-panel="handbook"],
+#tab-onboarding:checked ~ .tabs__panels [data-panel="onboarding"],
+#tab-process:checked ~ .tabs__panels [data-panel="process"],
+#tab-okrs:checked ~ .tabs__panels [data-panel="okrs"] {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Feature cards
+   -------------------------------------------------------------------------- */
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.feature__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.feature__icon span {
+  display: grid;
+  place-items: center;
+  width: 90%;
+  height: 90%;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.feature__icon img {
+  width: 1rem;
+  height: auto;
+}
+
+.feature__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.feature__text p {
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Media queries
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .dropdown__panel {
+    position: absolute;
+    inset-block-start: calc(100% + var(--space-2));
+    inset-inline-start: -1.0625rem;
+    z-index: 10;
+    width: 14.875rem;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-4) var(--space-3);
+    background-color: var(--color-surface);
+    border: none;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-menu);
+  }
+
+  .dropdown__link:hover {
+    transform: translateX(0.75rem);
+  }
+
+  .tabs {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+
+  .tabs__list {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+
+  .tabs__label {
+    padding: 1rem 2rem;
+  }
+
+  .tabs__panels {
+    max-width: 43.7rem;
+  }
+
+  .feature {
+    flex-direction: row;
+    align-items: center;
+    text-align: start;
+  }
+
+  /* ---- Hero collage ---------------------------------------------------- */
+
+  .collage {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .collage__item {
+    position: absolute;
+    width: 100%;
+    transition: transform var(--transition-slow);
+  }
+
+  .collage__item img {
+    width: 100%;
+  }
+
+  .collage__item--1 {
+    max-width: 12rem;
+    inset-inline-start: 1rem;
+    inset-block-start: 10rem;
+    transform: rotate(60deg);
+  }
+
+  .collage__item--2 {
+    z-index: 3;
+    max-width: 10rem;
+    inset-block-start: 12rem;
+  }
+
+  .collage__item--3 {
+    z-index: 2;
+    max-width: 8rem;
+    inset-block-start: 9rem;
+    inset-inline-start: 5rem;
+  }
+
+  .collage__item--4 {
+    z-index: 2;
+    max-width: 7rem;
+    inset-block-start: 6.8rem;
+    inset-inline-start: 4rem;
+  }
+
+  .collage__item--5 {
+    z-index: 4;
+    max-width: 5.85rem;
+    inset-block-start: 4.5rem;
+    inset-inline-start: 1rem;
+  }
+
+  .collage__item--6 {
+    z-index: 2;
+    max-width: 5.85rem;
+    inset-block-start: -4rem;
+    inset-inline-start: 4rem;
+  }
+
+  .collage__item--7 {
+    z-index: 2;
+    max-width: 4rem;
+    inset-block-start: -7rem;
+    inset-inline-start: 12rem;
+  }
+
+  .collage__item--8 {
+    z-index: 1;
+    max-width: 4rem;
+    inset-block-start: -7rem;
+    inset-inline-start: 19rem;
+  }
+
+  .collage__item--9 {
+    max-width: 13.5rem;
+    inset-inline: 0;
+    inset-block-end: 0;
+    margin-inline: auto;
+  }
+
+  .collage__item--10 {
+    max-width: 4rem;
+    inset-inline-end: 18.5rem;
+    inset-block-start: -5.5rem;
+  }
+
+  .collage__item--11 {
+    max-width: 5rem;
+    inset-inline-end: 12.5rem;
+    inset-block-start: -7.5rem;
+  }
+
+  .collage__item--12 {
+    z-index: 4;
+    max-width: 7.15rem;
+    inset-inline-end: 5.5rem;
+    inset-block-start: -2.5rem;
+  }
+
+  .collage__item--13 {
+    z-index: 3;
+    max-width: 7.15rem;
+    inset-inline-end: 1.55rem;
+    inset-block-start: 4rem;
+  }
+
+  .collage__item--14 {
+    z-index: 2;
+    max-width: 12rem;
+    inset-inline-end: 0;
+    inset-block-start: 9rem;
+  }
+
+  .collage__item--15 {
+    z-index: 1;
+    max-width: 12rem;
+    inset-inline-end: 1rem;
+    inset-block-start: 10rem;
+  }
+
+  /* Scroll state — the sheets drift apart */
+
+  .is-scrolled .collage__item--4,
+  .is-scrolled .collage__item--5 {
+    transform: translate(1.65rem, 1.65rem);
+  }
+
+  .is-scrolled .collage__item--6 {
+    transform: translate(1.65rem, 2.65rem);
+  }
+
+  .is-scrolled .collage__item--7,
+  .is-scrolled .collage__item--8 {
+    transform: translate(-1.65rem, 2.65rem);
+  }
+
+  .is-scrolled .collage__item--10,
+  .is-scrolled .collage__item--11,
+  .is-scrolled .collage__item--12 {
+    transform: translate(1.2rem, 3.2rem);
+  }
+
+  .is-scrolled .collage__item--13 {
+    transform: translateY(3.2rem);
+  }
+}
