@@ -79,7 +79,7 @@ Both paths behave identically — every reference in the project is relative.
 
 ## Deployment
 
-Deployed at [slite.wib.digital](https://slite.wib.digital) on Vercel. Upload the
+Deployed at [pablowib.github.io/Slite-Clone-Landing](https://pablowib.github.io/Slite-Clone-Landing) on GitHub Pages. Upload the
 repository root as-is: no build command, no output directory, no environment
 variables. The same applies to GitHub Pages, Netlify or any static host.
 
